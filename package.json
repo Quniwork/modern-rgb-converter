@@ -1,0 +1,65 @@
+{
+  "name": "modern-rgb-converter",
+  "displayName": "Modern RGB Converter",
+  "description": "Convert legacy rgba(0,0,0,0.4) format to modern CSS syntax rgb(0 0 0 / 40%)",
+  "version": "1.1.0",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Formatters",
+    "Programming Languages"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:modern-rgb-converter.convert",
+    "onCommand:modern-rgb-converter.convertAll"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "modern-rgb-converter.convert",
+        "title": "Modern RGB: Convert Selection"
+      },
+      {
+        "command": "modern-rgb-converter.convertAll",
+        "title": "Modern RGB: Convert Entire File"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "modern-rgb-converter.convert",
+          "group": "modification@1",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "modern-rgb-converter.convertAll",
+          "group": "modification@2"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "modern-rgb-converter.convert",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m",
+        "when": "editorTextFocus && editorHasSelection"
+      },
+      {
+        "command": "modern-rgb-converter.convertAll",
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.70.0",
+    "eslint": "^8.20.0"
+  }
+}
